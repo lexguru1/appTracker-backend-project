@@ -3,6 +3,9 @@ const corsMiddleWare = require("cors");
 // Auth middleware: our own code. Checks for the existence of a token in a header called `authentication`.
 const authMiddleWare = require("./auth/middleware");
 const authRouter = require("./routers/auth");
+const listsRouter = require("./routers/lists");
+const applicationsRouter = require("./routers/applications");
+
 const { PORT } = require("./config/constants");
 
 // Create an express app
@@ -32,7 +35,8 @@ app.use(bodyParserMiddleWare);
  */
 
 app.use("/auth", authRouter);
-
+app.use("/lists", listsRouter);
+app.use("/applications", applicationsRouter);
 // POST endpoint which requires a token for testing purposes, can be removed
 app.post("/authorized_post_request", authMiddleWare, (req, res) => {
   // accessing user that was added to req by the auth middleware
