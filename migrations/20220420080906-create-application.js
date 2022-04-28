@@ -21,7 +21,7 @@ module.exports = {
         allowNull: false,
       },
       jd: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       createdAt: {

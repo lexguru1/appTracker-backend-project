@@ -28,7 +28,23 @@ router.post("/", async (req, res, next) => {
       jd,
       appListId,
     });
-    res.send(newApplication);
+    res.sendStatus(200);
+  } catch (e) {
+    console.log(e);
+    next(e);
+  }
+});
+
+// delete all applications
+
+router.delete("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const delApp = await Applications.findByPk(id);
+    if (delApp) {
+      await delApp.destroy();
+    }
+    res.sendStatus(200);
   } catch (e) {
     console.log(e.message);
     next(e);

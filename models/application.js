@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       company: { type: DataTypes.STRING, allowNull: false },
       position: { type: DataTypes.STRING, allowNull: false },
       status: { type: DataTypes.STRING, allowNull: false },
-      jd: { type: DataTypes.TEXT, allowNull: false },
+      jd: { type: DataTypes.STRING, allowNull: false },
     },
     {
       sequelize,
