@@ -51,4 +51,21 @@ router.delete("/:id", async (req, res, next) => {
   }
 });
 
+// edit an application
+
+router.patch("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const { status } = req.body;
+    const patchApp = await Applications.findByPk(id);
+    if (patchApp) {
+      await patchApp.update({ status });
+    }
+    res.sendStatus(200);
+  } catch (e) {
+    console.log(e.message);
+    next(e);
+  }
+});
+
 module.exports = router;
